@@ -33,7 +33,7 @@ Or [download as ZIP](https://github.com/karlgroves/image-caption/archive/master.
 3. Start using it!
 
     ```html
-    <image-caption></image-caption>
+    <image-caption src="/foo.png" alt="useful alt for the foo image"></image-caption>
     ```
 
 ## Options
