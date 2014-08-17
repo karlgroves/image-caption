@@ -1,0 +1,68 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Define your custom element -->
+<polymer-element name="image-caption" attributes="src alt">
+    <template>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+
+            figure {
+                margin: 1em;
+            }
+
+            figure img {
+                border: 1px solid #333;
+            }
+
+            figcaption {
+                color: #fff;
+                background-color: #000;
+                opacity: 0.8;
+                font-family: arial, helvetica, Verdana, sans-serif;
+                font-size: .86em;
+            }
+
+            figcaption span {
+                display: block;
+                margin-left: 1em;
+                padding-top: .5em;
+                padding-bottom: .5em;
+            }
+        </style>
+        <figure><img src="{{src}}" alt="{{alt}}"></figure>
+    </template>
+
+    <script>
+        Polymer('image-caption', {
+            // Fires when the element’s initial set of children and siblings are guaranteed to exist
+            domReady: function () {
+                function doCaption(el) {
+                    var container = el.parentNode,
+                        alt = el.getAttribute('alt'),
+                        caption = document.createElement('span'),
+                        capWrapper = document.createElement('figcaption'),
+                        captionText = document.createTextNode(alt);
+
+                    el.setAttribute('alt', '');
+                    caption.appendChild(captionText);
+
+                    capWrapper.appendChild(caption);
+                    container.appendChild(capWrapper);
+
+                    capWrapper.setAttribute('style', 'width:' + el.offsetWidth + 'px; margin-top: -' + (capWrapper.offsetHeight + 3) + 'px;');
+                }
+
+                var image = this.shadowRoot.querySelector('img');
+
+                image.onload = function () {
+                    doCaption(this);
+                }
+            }
+        });
+    </script>
+</polymer-element>
