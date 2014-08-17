@@ -40,19 +40,8 @@ Or [download as ZIP](https://github.com/karlgroves/image-caption/archive/master.
 
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
-
-## Methods
-
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
-
-## Events
-
-Event         | Description
----           | ---
-`onsomething` | Triggers when something happens.
+`src`         | *string*    | blank        | the source file for the image
+`alt`         | *string*    | blank        | the alt attribute for the image
 
 ## Development
 
